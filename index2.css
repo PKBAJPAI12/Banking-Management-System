@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color:rgb(191, 211, 241);
+}
+.img1{
+   width:5%; 
+}
+.section1{
+    display: flex;
+    justify-content: center;
+}
+
+.section2{
+    display: flex;
+    justify-content: center;
+}
+/*.section2 img{
+    height: 100px;
+    width: 100px; 
+}
+*/
+.card{
+    background-color: transparent;
+    border-color: transparent;
+    align-items: center;
+}
+
+.card1 img{
+    width: 70%;
+}
+.btn1{
+    width: 100%;
+    padding: 1em;
+}
