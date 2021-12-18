@@ -1,5 +1,5 @@
 <?php
-
+include 'php/dbconnect.php';
 ?>
 
 
@@ -12,16 +12,17 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="index2.css">
+    <link rel="stylesheet" href="css/index2.css">
     <title>Banking System</title>
   </head>
   <body>
     <?php
-    include '_navbar.php';
+    include 'php/_navbar.php';
     ?>
+    
     <div class="section1 mx-4 my-4">
     <div class="card" style="width: 15rem;">
-  <img src="pngaaa.com-2574806.png" class="card-img" alt="...">
+  <img src="img/pngaaa.com-2574806.png" class="card-img" alt="...">
 </div>
 </div>
     
@@ -32,7 +33,7 @@
     <div class="row">
         <div class="col">
 <div class="card card1" style="width: 15rem;">
-  <img src="pngaaa.com-4390037.png" class="card-img" alt="...">
+  <img src="img/pngaaa.com-4390037.png" class="card-img" alt="...">
 </div>
 <div class="card-body my-3">
 
@@ -42,7 +43,7 @@
 
 <div class="col">
 <div class="card card1" style="width: 15rem;">
-  <img src="pngaaa.com-243147.png" class="card-img" alt="...">
+  <img src="img/pngaaa.com-243147.png" class="card-img" alt="...">
  
 </div>
 <div class="card-body center my-3">
@@ -55,7 +56,7 @@
 
 <div class="col">
 <div class="card card1" style="width: 15rem;">
-  <img src="pngaaa.com-4875806.png" class="card-img-top" alt="...">
+  <img src="img/pngaaa.com-4875806.png" class="card-img-top" alt="...">
   
 </div>
 <div class="card-body my-3">
@@ -67,7 +68,7 @@
 <div class="col">
 <div class="card card1" style="width: 15rem;">
 <br>
-  <img src="pngaaa.com-4605854.png" class="card-img-top" alt="...">
+  <img src="img/pngaaa.com-4605854.png" class="card-img-top" alt="...">
   
 </div>
 <br>
