@@ -38,7 +38,7 @@ include 'php/dbconnect.php';
 </div>
 <div class="card-body my-3">
 
-  <a href="#" class="btn btn-primary btn1">All Customers</a>
+  <a href="php/customers.php" class="btn btn-primary btn1">All Customers</a>
   </div>
 </div>
 
@@ -49,7 +49,7 @@ include 'php/dbconnect.php';
 </div>
 <div class="card-body center my-3">
     
-    <a href="#" class="btn btn-primary btn1">Transfer Money</a>
+    <a href="php/moneytransfer.php" class="btn btn-primary btn1">Transfer Money</a>
     
   </div>
 </div>
@@ -61,11 +61,9 @@ include 'php/dbconnect.php';
   
 </div>
 <div class="card-body my-3">
-  <a href="#" class="btn btn-primary btn1" >Transaction History</a>
+  <a href="php/transactionhistory.php" class="btn btn-primary btn1" >Transaction History</a>
   </div>
 </div>
-
-
 <div class="col">
 <div class="card card1" style="width: 15rem;">
 <br>
@@ -77,7 +75,6 @@ include 'php/dbconnect.php';
   <a href="#" class="btn btn-primary btn1">Contact Support</a>
   </div>
 </div>
-
 
 </div>
 </div>
