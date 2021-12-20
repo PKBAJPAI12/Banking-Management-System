@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <img src="./img/pngaaa.com-2574806.png" class="img1" alt="" srcset="">
+    <img src="../img/pngaaa.com-2574806.png" class="img1" alt="" srcset="">
     <b><a class="navbar-brand" href="#">PBL BANK</a></b>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
