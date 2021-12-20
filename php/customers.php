@@ -12,7 +12,7 @@ include 'dbconnect.php';
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/index2.css">
+    <link rel="stylesheet" href="../css/index2.css">
     <title>Banking System</title>
   </head>
   <body>
@@ -30,6 +30,7 @@ include 'dbconnect.php';
       <th scope="col">Account No</th>
       <th scope="col">Account Holder</th>
       <th scope="col">Email</th>
+        <th scope="col">Account Type</th>
       <th scope="col">Current Balance</th>
       <th scope="col">Actions</th>
 
@@ -39,18 +40,19 @@ include 'dbconnect.php';
 
 
   <?php 
-$sql="SELECT * FROM `customers`";
+$sql="SELECT * FROM `accountdetails`";
 $result=mysqli_query($con,$sql); 
 while($row = mysqli_fetch_assoc($result)){
 echo "<tr>        
-            <th>" .$row['account_no']. "</th>
-            <td >" .$row['account_holder_name']. "</td>
-            <td >" .$row['email']. "</td>
+            <td>" .$row['accountno']. "</td>
+            <td >" .$row['name']. "</td>
+            <td >" .$row['phoneno']. "</td>
+            <td >" .$row['account']. "</td>
             <td>" .$row['current_balance']. "</td>";
 
       echo " <td>
-            '<a href='userprofile.php' class='btn btn-primary' >Select</a> 
-            <a href='moneytransfer.php' class='btn btn-primary' >Money Transfer </a>'
+            '<a href='userprofile.php?id={$row['accountno']}' class='btn btn-primary'>Select</a>
+            <a href='moneytransfer.php?id={$row['accountno']}' class='btn btn-primary'>Money Transfer</a>'
             </td>
             
         </tr>";
@@ -66,6 +68,7 @@ echo "<tr>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="../js/jquery_min_js.js"></script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--

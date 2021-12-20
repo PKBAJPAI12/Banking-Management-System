@@ -23,7 +23,40 @@ include 'dbconnect.php';
        <div class="head my-4">
         <h1 class="text-center">Money Transfer</h1>
     </div>
-    
+      <div class="container">
+        <form action="mthandle.php" method="POST">
+
+        <div class="card" style="width: 18rem;">
+
+            <div class="card-body">
+                <h5 class="card-title">Money Transfer From</h5>
+                <label for="acno">Account Number:</label>
+                <input type="text" class="form-control" id="fname" name="sacno" value="' .$row['accountno']. '"><br><br>
+                <label for="lname">Account Name:</label>
+                <input type="text"  class="form-control" id="lname" name="sname" value="' .$row['name']. '"><br><br>
+
+
+            </div>
+        </div>
+            <div class="card" style="width: 18rem;">
+
+                <div class="card-body">
+                    <h5 class="card-title">Money Transfer To</h5>
+                    <label for="acno">Account Number:</label>
+                    <input type="text" class="form-control"  id="rname" name="racno" ><br><br>
+                    <label for="lname">Account Name:</label>
+                    <input type="text"  class="form-control" id="cname" name="rname"><br><br>
+                    <label for="lname">Ammount Transfer:</label>
+                    <input type="text"  class="form-control" id="pname" name="ammount"><br><br>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Transfer Money</button>
+
+        </form>
+    </div>';
+    }
+?>
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
