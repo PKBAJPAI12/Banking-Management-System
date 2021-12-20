@@ -25,33 +25,51 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $scResult=mysqli_query($con,$scSql);
         $scRow=mysqli_fetch_assoc($scResult);
         $sCurrent=$scRow['current_balance'];
-        $sCbal=$sCurrent-$ammount;
-        $rcSql="SELECT * FROM `accountdetails` WHERE accountno = $racno";
-        $rcResult=mysqli_query($con,$rcSql);
-        $rcRow=mysqli_fetch_assoc($rcResult);
-        $rCurrent=$rcRow['current_balance'];
-        $rCbal=$rCurrent+$ammount;
-      $senderSql="UPDATE `accountdetails` SET `current_balance` = '$sCbal' WHERE `accountdetails`.`accountno` = $sacno  ";
-        $receiverSql="UPDATE `accountdetails` SET `current_balance` = '$rCbal' WHERE `accountdetails`.`accountno` = $racno  ";
-       $senderResult=mysqli_query($con,$senderSql);
-        $receiverResult=mysqli_query($con,$senderSql);
-    }
-    else if($sNumRows==1 && $rNumRows!=1) {
-        $showError = "Account not Created";
+        if($sCurrent>=$ammount){
+            $sAbal=$sCurrent-$ammount;
+            $rcSql="SELECT * FROM `accountdetails` WHERE accountno = $racno";
+            $rcResult=mysqli_query($con,$rcSql);
+            $rcRow=mysqli_fetch_assoc($rcResult);
+            $rCurrent=$rcRow['current_balance'];
+            $rAbal=$rCurrent+$ammount;
+            $senderSql="UPDATE `accountdetails` SET `current_balance` = $sAbal WHERE `accountdetails`.`accountno` = $sacno  ";
+            $receiverSql="UPDATE `accountdetails` SET `current_balance` = $rAbal WHERE `accountdetails`.`accountno` = $racno  ";
+            $result=mysqli_query($con,$senderSql);
+            $receiverResult=mysqli_query($con,$receiverSql);
 
-    }
+            if($result){
 
-        else if ($sNumRows!=1 && $rNumRows==1){
+                header("Location: moneytransfer.php?transfersuccess=true");
+                exit();
+            }
+            else{
+                $showError = "Sorry! Money Transfer is UnSuccessfull! Due to Technical Reason";
 
-            $showError = "Account not Created";
+            }
 
         }
         else{
-            $showError = "Account not Created";
-
+            $showError = "Sorry! Money Transfer is UnSuccessfull! Due to Insufficient Ammount in Your Account";
         }
 
-    header("Location: signup.php?accountopening=false&error=$showError");
+
+    }
+    else if($sNumRows==1 && $rNumRows!=1) {
+        $showError = "Receiver Account Detail is Incorrect. Please! Enter Valid Account Details";
+
+    }
+
+    else if ($sNumRows!=1 && $rNumRows==1){
+
+        $showError = "Sender Account Detail is Incorrect. Please! Enter Valid Account Details";
+
+    }
+    else{
+        $showError = "Account Detail is Incorrect. Please! Enter Valid Sender and Receiver Account Details";
+
+    }
+
+    header("Location: moneytransfer.php?transfersuccess=false&error=$showError");
 
 
 
