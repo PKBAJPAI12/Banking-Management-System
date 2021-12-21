@@ -21,7 +21,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $result = mysqli_query($con, $existSql);
     $numRows = mysqli_num_rows($result);
     if($numRows>0){
-        $showError = "Account is Already Created with this Account Name and Phone Number! Try with New Phone Number";
+        $showError = "Check Your Information May be Account is Already Created with this Name and Phone Number!";
     }
     else{
         
@@ -31,7 +31,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
        
             if($result){
                 
-               header("Location: signup.php?accountopening=true");
+
+               header("Location: customersignup.php?accountopening=true&otp=$randnumber");
                 exit();
             }
             
@@ -43,7 +44,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             
         }
     }
-        header("Location: signup.php?accountopening=false&error=$showError");
+        header("Location: customersignup.php?accountopening=false&error=$showError");
     
         
                

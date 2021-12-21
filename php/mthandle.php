@@ -11,8 +11,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $rname = $_POST['rname'];
     $ammount=$_POST['ammount'];
 
-
-
+    
+     
     // Check whether this account exists
     $sSql = "SELECT * FROM `accountdetails` WHERE accountno = $sacno AND name='$sname'";
     $sResult = mysqli_query($con, $sSql);
@@ -28,46 +28,53 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         if($sCurrent>=$ammount){
             $sAbal=$sCurrent-$ammount;
             $rcSql="SELECT * FROM `accountdetails` WHERE accountno = $racno";
-            $rcResult=mysqli_query($con,$rcSql);
-            $rcRow=mysqli_fetch_assoc($rcResult);
-            $rCurrent=$rcRow['current_balance'];
-            $rAbal=$rCurrent+$ammount;
-            $senderSql="UPDATE `accountdetails` SET `current_balance` = $sAbal WHERE `accountdetails`.`accountno` = $sacno  ";
-            $receiverSql="UPDATE `accountdetails` SET `current_balance` = $rAbal WHERE `accountdetails`.`accountno` = $racno  ";
-            $result=mysqli_query($con,$senderSql);
-            $receiverResult=mysqli_query($con,$receiverSql);
+        $rcResult=mysqli_query($con,$rcSql);
+        $rcRow=mysqli_fetch_assoc($rcResult);
+        $rCurrent=$rcRow['current_balance'];
+        $rAbal=$rCurrent+$ammount;
+      $senderSql="UPDATE `accountdetails` SET `current_balance` = $sAbal WHERE `accountdetails`.`accountno` = $sacno  ";
+        $receiverSql="UPDATE `accountdetails` SET `current_balance` = $rAbal WHERE `accountdetails`.`accountno` = $racno  ";
+       $result=mysqli_query($con,$senderSql);
+       $receiverResult=mysqli_query($con,$receiverSql);
 
-            if($result){
+        if($result){
+               $status="Money Transfer is Successfull"; 
+            header("Location: moneytransfer.php?transfersuccess=true");
+            $insertSql="INSERT INTO `transactionhistory` (`sender_acn`, `receiver_acn`,`sender_name`, `receiver_name`, `transfer_money`,`status`) VALUES 
+            ('$sacno', '$racno','$sname', '$rname', '$ammount', '$status')";
+         $insertResult = mysqli_query($con, $insertSql);
 
-                header("Location: moneytransfer.php?transfersuccess=true");
-                exit();
-            }
-            else{
-                $showError = "Sorry! Money Transfer is UnSuccessfull! Due to Technical Reason";
-
-            }
+             exit();
+         }
+         else{
+            $showError = "Sorry! Money Transfer is UnSuccessfull! Due to Technical Reason"; 
+ 
+         }
 
         }
         else{
-            $showError = "Sorry! Money Transfer is UnSuccessfull! Due to Insufficient Ammount in Your Account";
+            $showError = "Sorry! Money Transfer is UnSuccessfull! Due to Insufficient Ammount in Your Account"; 
         }
-
-
+        
+        
     }
     else if($sNumRows==1 && $rNumRows!=1) {
         $showError = "Receiver Account Detail is Incorrect. Please! Enter Valid Account Details";
 
     }
 
-    else if ($sNumRows!=1 && $rNumRows==1){
+        else if ($sNumRows!=1 && $rNumRows==1){
 
-        $showError = "Sender Account Detail is Incorrect. Please! Enter Valid Account Details";
+            $showError = "Sender Account Detail is Incorrect. Please! Enter Valid Account Details";
 
-    }
-    else{
-        $showError = "Account Detail is Incorrect. Please! Enter Valid Sender and Receiver Account Details";
+        }
+        else{
+            $showError = "Account Detail is Incorrect. Please! Enter Valid Sender and Receiver Account Details";
 
-    }
+        }
+        $insertSql="INSERT INTO `transactionhistory` (`sender_acn`, `receiver_acn`,`sender_name`, `receiver_name`, `transfer_money`,`status`) VALUES 
+        ('$sacno', '$racno','$sname', '$rname', '$ammount', '$showError')";
+     $insertResult = mysqli_query($con, $insertSql);
 
     header("Location: moneytransfer.php?transfersuccess=false&error=$showError");
 
