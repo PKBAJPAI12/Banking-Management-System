@@ -12,16 +12,22 @@ include 'dbconnect.php';
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/index2.css">
+    <link rel="stylesheet" href="../css/index2.css">
     <title>Profile - Banking System</title>
   </head>
   <body>
     <?php
     include '_navbar.php';
-    ?>
-    <div class="head my-4">
-        <h1 class="text-center">Welcome! <?php echo "$account_holder_name"?> in Our PBL Bank User DashBoard</h1>
+
+if(isset($_GET['id'])) {
+$id=$_GET['id'];
+$sql="SELECT * from `accountdetails` WHERE accountno=$id";
+    $result=mysqli_query($con,$sql);
+$row=mysqli_fetch_assoc($result);
+    echo '<div class="head my-4">
+        <h1 class="text-center">Welcome! ' .$row['name']. ' in Our PBL Bank User DashBoard</h1>
     </div>
+
 
     <div class="container">
     <div class="head my-4">
@@ -34,14 +40,20 @@ include 'dbconnect.php';
 </div>
 
 <div class="container">
-<h1>Account Number : <?php echo "$account_no"?></h1>
-<h1>Account Holder Name : <?php echo "$account_holder_name"?></h1>
-<h1>Email : <?php echo "$email"?></h1>
-<h1>Current Balance : <?php echo "$current_balance"?></h1>
+<h1>Account Number : ' .$row['accountno']. '</h1>
+<h1>Account Holder Name : ' .$row['name']. '</h1>
+<h1>Father Name : ' .$row['father_name']. '</h1>
+<h1>Age : ' .$row['age']. '</h1>
+<h1>Email : ' .$row['email'].' </h1>
+<h1>PhoneNo : ' .$row['phoneno'].' </h1>
+<h1>Resedential Address : ' .$row['address'].' </h1>
+<h1>Account Type : ' .$row['account'].' </h1>
+<h1>Current Balance : ' .$row['current_balance']. ' </h1>
 </div>
 
-</div>
-
+</div>';
+}
+?>
 <div class="container">
   <div class="head my-4">
     <h1 class="text-center">Your Transaction History</h1>
