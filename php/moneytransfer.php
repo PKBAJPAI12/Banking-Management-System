@@ -5,7 +5,7 @@ include 'dbconnect.php';
 
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,11 +13,17 @@ include 'dbconnect.php';
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/index2.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
     <title>Banking System</title>
   </head>
   <body>
     <?php
     include '_navbar.php';
+
+    
+
+    
     $getsql="SELECT * FROM `transactionhistory` ORDER BY `transactionhistory`.`transaction_id` DESC ";
     $rresult=mysqli_query($con, $getsql);
    
@@ -56,7 +62,7 @@ if(isset($_GET['transfersuccess']) && $_GET['transfersuccess']=="false"){
 }
     
 
-
+/*
     if(isset($_GET['id'])) {
         $id=$_GET['id'];
         $sql="SELECT * FROM `accountdetails` WHERE accountno=$id";
@@ -99,8 +105,157 @@ if(isset($_GET['transfersuccess']) && $_GET['transfersuccess']=="false"){
         </form>
     </div>';
     }
+    */
+
+
 ?>
-    <!-- Option 1: Bootstrap Bundle with Popper -->
+
+<?php
+
+if(isset($_SESSION['customerloggedin']) && $_SESSION['customerloggedin']==true){
+echo '
+<div class="transferimage w3-hover-opacity">
+    <div class="semibox">
+
+   </div>
+   <div class="semibox">
+    <div style="margin-bottom: 2rem" class="semibox1">
+    <h1 style="color:white; text-align:center ">Welcome '.$_SESSION['name']. ' in PBL Bank</h1>
+
+    </div> 
+    <div class="semibox1">
+    <h2 style="color:gold; text-align:center ">Account Details</h2>
+        <a style="color:black" href="transactionhistory.php" class="btn btn-primary topbutton">Transaction History</a>  
+    </div>
+   
+   </div>
+  
+ </div>
+
+
+ <div class="head my-4">
+        <h1 class="text-center">Money Transfer</h1>
+    </div>
+      <div class="container">
+        <form action="mthandle.php" method="POST">
+<div class="row">
+        <div class="card" style="width: 18rem;">
+
+            <div class="card-body">
+                <h5 class="card-title">Money Transfer From</h5>
+                <label for="acno">Account Number:</label>
+                <input type="text" class="form-control" id="fname" name="sacno" value="' .$_SESSION['accountno']. '"><br><br>
+                <label for="lname">Account Name:</label>
+                <input type="text"  class="form-control" id="lname" name="sname" value="' .$_SESSION['name']. '"><br><br>
+
+
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+
+        <div class="card-body">
+            <img style="width:18rem" src="../img/money-transfer (1).png" alt="" srcset="">
+        </div>
+    </div>
+   
+
+            <div class="card" style="width: 18rem;">
+
+                <div class="card-body">
+                    <h5 class="card-title">Money Transfer To</h5>
+                    <label for="acno">Account Number:</label>
+                    <input type="text" class="form-control"  id="rname" name="racno" ><br><br>
+                    <label for="lname">Account Name:</label>
+                    <input type="text"  class="form-control" id="cname" name="rname"><br><br>
+                    <label for="lname">Ammount Transfer:</label>
+                    <input type="text"  class="form-control" id="pname" name="ammount"><br><br>
+                </div>
+            </div>
+</div>
+            <button style="padding:1rem; display:flex; justify-content:center; margin:auto" type="submit" class="formsubmitbtn btn btn-primary">Send Money</button>
+
+        </form>
+    </div>
+    <br>
+    <br>
+
+    ';
+  }
+  else if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true){
+    echo '
+<div class="transferimage w3-hover-opacity">
+    <div class="semibox">
+
+   </div>
+   <div class="semibox">
+    <div style="margin-bottom: 2rem" class="semibox1">
+    <h1 style="color:white; text-align:center ">Welcome '.$_SESSION['name']. ' in PBL Bank</h1>
+
+    </div> 
+    <div class="semibox1">
+    <h2 style="color:gold; text-align:center ">Fund Transfer</h2>
+        <a style="color:black" href="transactionhistory.php" class="btn btn-primary topbutton">Transaction History</a>  
+    </div>
+   
+   </div>
+  
+ </div>
+
+
+ <div class="head my-4">
+        <h1 class="text-center">Money Transfer</h1>
+    </div>
+      <div class="container">
+        <form action="mthandle.php" method="POST">
+<div class="row">
+        <div class="card" style="width: 18rem;">
+
+            <div class="card-body">
+                <h5 class="card-title">Money Transfer From</h5>
+                <label for="acno">Account Number:</label>
+                <input type="text" class="form-control" id="fname" name="sacno"><br><br>
+                <label for="lname">Account Name:</label>
+                <input type="text"  class="form-control" id="lname" name="sname" ><br><br>
+
+
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+
+        <div class="card-body">
+            <img style="width:18rem" src="../img/money-transfer (1).png" alt="" srcset="">
+        </div>
+    </div>
+   
+
+            <div class="card" style="width: 18rem;">
+
+                <div class="card-body">
+                    <h5 class="card-title">Money Transfer To</h5>
+                    <label for="acno">Account Number:</label>
+                    <input type="text" class="form-control"  id="rname" name="racno" ><br><br>
+                    <label for="lname">Account Name:</label>
+                    <input type="text"  class="form-control" id="cname" name="rname"><br><br>
+                    <label for="lname">Ammount Transfer:</label>
+                    <input type="text"  class="form-control" id="pname" name="ammount"><br><br>
+                </div>
+            </div>
+</div>
+            <button style="padding:1rem; display:flex; justify-content:center; margin:auto" type="submit" class="formsubmitbtn btn btn-primary">Send Money</button>
+
+        </form>
+    </div>
+    <br>
+    <br>
+
+    ';
+
+  }
+
+?>
+<!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->

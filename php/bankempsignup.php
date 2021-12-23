@@ -1,6 +1,5 @@
 <?php
 include 'dbconnect.php';
-//include 'openac.php';
 ?>
 
 
@@ -38,7 +37,7 @@ include 'dbconnect.php';
         <div>
         Employee Registeration is Successfully Done. Your Employee ID is '  .$row['employee_id'].' and Your Temporary Password is 
         ' .$_GET['temppass'].'
-             <strong>Please!</strong> Change Your Password for Secure Authentication
+             <strong>Please!</strong> <a href="createemployeepass.php"> Change Your Password</a> for Secure Authentication
              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
              </div>
            </div>';

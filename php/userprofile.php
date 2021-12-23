@@ -13,15 +13,23 @@ include 'dbconnect.php';
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/index2.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
     <title>Profile - Banking System</title>
   </head>
   <body>
     <?php
     include '_navbar.php';
 
-if(isset($_GET['id'])) {
+ if(isset($_SESSION['customerloggedin']) && $_SESSION['customerloggedin']==true){ 
+   $id=$_SESSION['accountno'] ;
+  $sql="SELECT * from `accountdetails` WHERE accountno=$id";
+  $result=mysqli_query($con,$sql);
+$row=mysqli_fetch_assoc($result);
+  
+/*if(isset($_GET['id'])) {
 $id=$_GET['id'];
-$sql="SELECT * from `accountdetails` WHERE accountno=$id";
+$sql="SELECT * from `accountdetails` WHERE accountno=$id;
     $result=mysqli_query($con,$sql);
 $row=mysqli_fetch_assoc($result);
     echo '<div class="head my-4">
@@ -52,18 +60,125 @@ $row=mysqli_fetch_assoc($result);
 </div>
 
 </div>';
-}
-?>
+}*/
+
+
+
+
+
+echo '<div class="userimage w3-hover-opacity">
+       <div class="semibox">
+
+      </div>
+      <div class="semibox">
+       <div style="margin-bottom: 2rem" class="semibox1">
+       <h1 style="color:white; text-align:center ">Welcome '.$_SESSION['name']. ' in PBL Bank</h1>
+
+       </div> 
+       <div class="semibox1">
+       <h2 style="color:gold; text-align:center ">Account Details</h2>
+           <a style="color:black" href="moneytransfer.php" class="btn btn-primary topbutton">Money Transfer</a>  
+       </div>
+      
+      </div>
+     
+    </div>
+
 <div class="container">
   <div class="head my-4">
-    <h1 class="text-center">Your Transaction History</h1>
+    <h1 class="text-center">My Bank Account Details</h1>
+</div>
+</div>
+
+<div class="container my-4">
+<div class="row">
+<div class="col-3 box1">
+<div class="boximage">
+<img style="width:15rem" src="../img/pngaaa.com-5461970.png" alt="" srcset="">
+</div>
+</div>
+<div class="col-8 box2">
+<div class="row mx-3 my-5">
+<div class="col-6">
+<h3 class="userheading">Account Holder Name: </h3>
+</div>
+<div class="col-6">
+<h3 class="userheading">' .$_SESSION['name']. '</h3>
+
+</div>
+
+<div class="col-6">
+<h3 class="userheading">Father Name: </h3>
+</div>
+<div class="col-6">
+<h3 class="userheading">' .$row['father_name'].'</h3>
+
+</div>
+
+
+<div class="col-6">
+<h3 class="userheading">Account Number: </h3>
+</div>
+<div class="col-6">
+<h3 class="userheading">' .$_SESSION['accountno']. '</h3>
+
+</div>
+
+<div class="col-6">
+<h3 class="userheading">Age: </h3>
+</div>
+<div class="col-6">
+<h3 class="userheading">' .$row['age'].'</h3>
+
+</div>
+
+
+<div class="col-6">
+<h3 class="userheading">Account Holder Email ID: </h3>
+</div>
+<div class="col-6">
+<h3 class="userheading">' .$row['email'].'</h3>
+
+</div>
+
+<div class="col-6">
+<h3 class="userheading">Account Holder Phone Number: </h3>
+</div>
+<div class="col-6">
+<h3 class="userheading">' .$row['phoneno'].'
+</h3>
+
 </div>
 
 
 
+<div class="col-6">
+<h3 class="userheading">Account Type: </h3>
+</div>
+<div class="col-6">
+<h3 class="userheading">' .$row['account'].'</h3>
+
 </div>
 
+<div class="col-6">
+<h3 class="userheading">Current Balance: </h3>
+</div>
+<div class="col-6">
+<h3 class="userheading"></h3>
+' .$row['current_balance'].'
 
+</div>
+<div class="col-12">
+<a style="color:black" href="createpassword.php" class="btn btn-primary topbutton">Change Password</a>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+';
+ }
+?>
     </div>
        <!-- Optional JavaScript; choose one of the two! -->
 

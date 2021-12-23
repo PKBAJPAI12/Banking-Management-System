@@ -13,12 +13,38 @@ include 'dbconnect.php';
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/index2.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
     <title>Banking System</title>
   </head>
   <body>
     <?php
     include '_navbar.php';
-    ?>
+    
+
+echo
+'<div class="customerimage w3-hover-opacity">
+    <div class="semibox">
+
+   </div>
+   <div class="semibox">
+    <div style="margin-bottom: 2rem" class="semibox1">
+    <h1 style="color:white; text-align:center ">Welcome ' .$_SESSION['name']. ' in PBL Bank</h1>
+
+    </div> 
+    <div class="semibox1">
+    <h2 style="color:gold; text-align:center ">Our Customers</h2>
+        <a style="color:black" href="../index.php" class="btn btn-primary topbutton">Go to Home</a>  
+    </div>
+   
+   </div>
+  
+ </div>
+
+
+<br>
+
+
     <div class="head my-4">
         <h1 class="text-center">Customers Details</h1>
     </div>
@@ -36,10 +62,10 @@ include 'dbconnect.php';
 
     </tr>
   </thead>
-  <tbody>
+  <tbody>';
 
 
-  <?php 
+   
 $sql="SELECT * FROM `accountdetails`";
 $result=mysqli_query($con,$sql); 
 while($row = mysqli_fetch_assoc($result)){
@@ -58,12 +84,12 @@ echo "<tr>
         </tr>";
 
 }
-        ?>
-   
+  echo '        
   </tbody>
 </table>
 
-    </div>
+    </div>';
+    ?>
        <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
