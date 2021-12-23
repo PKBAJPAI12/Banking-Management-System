@@ -3,10 +3,151 @@
     padding: 0;
 }
 body{
+
+}
+.navbar-collapse ul li{
+    margin-left:0.7rem;
+}
+.basebody{
     background-color:rgb(191, 211, 241);
 }
+.semibox{
+    height: 6rem;
+}
+.semibox1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.topbutton{
+    cursor: pointer;
+    background-color: yellow;
+    padding: 1.1rem;
+    margin: 2rem;
+    border-radius: 2rem;
+font-size: 1.1rem;
+}
+.topbutton:hover{
+    background-color: aquamarine;
+    transform: scale(1.1);
+}
 .img1{
-   width:5%; 
+   width:3rem; 
+}
+.topimage{
+    background-image:  linear-gradient(
+        rgba(26, 1, 247, 0.45)
+        ,
+        rgba(54, 190, 83, 0.45)
+    ), url('../img/business-g6c85dbffc_1920.jpg') ;
+    width: 100%;
+    height: 35rem;
+    background-position: center;
+
+}
+.loginimage{
+    background-image:  linear-gradient(
+        rgba(26, 1, 247, 0.45)
+        ,
+        rgba(54, 190, 83, 0.45)
+    ), url('../img/attack-gf733613dd_1280.png') ;
+    width: 100%;
+    height: 35rem;
+    background-position: center;
+
+}
+.transferimage{
+    background-image:  linear-gradient(
+        rgba(26, 1, 247, 0.45)
+        ,
+        rgba(54, 190, 83, 0.45)
+    ), url('../img/money-transfer-g0f00d6f4f_1920.jpg') ;
+    width: 100%;
+    height: 30rem;
+    background-position: center;
+   
+}
+.customerimage{
+    background-image:  linear-gradient(
+        rgba(26, 1, 247, 0.45)
+        ,
+        rgba(54, 190, 83, 0.45)
+    ), url('../img/ecommerce-g682856f8f_1920.jpg') ;
+    width: 100%;
+    height: 30rem;
+    background-position: center;
+      
+}
+.employeeimage{
+    background-image:  linear-gradient(
+        rgba(26, 1, 247, 0.45)
+        ,
+        rgba(54, 190, 83, 0.45)
+    ), url('../img/people-g2c4c83d53_1920.jpg') ;
+    width: 100%;
+    height: 30rem;
+    background-position: center;
+    
+}
+.passwordimage{
+    background-image:  linear-gradient(
+        rgba(26, 1, 247, 0.45)
+        ,
+        rgba(54, 190, 83, 0.45)
+    ), url('../img/fingerprint-ge30c0cb82_1920.jpg') ;
+    width: 100%;
+    height: 30rem;
+    background-position: bottom;
+   
+ 
+}
+.transactionimage{
+    background-image:  linear-gradient(
+        rgba(26, 1, 247, 0.45)
+        ,
+        rgba(54, 190, 83, 0.45)
+    ), url('../img/accountant-g9667c89f2_1920.jpg') ;
+    width: 100%;
+    height: 30rem;
+    background-position: center;
+     
+}
+.userimage{
+    background-image:  linear-gradient(
+        rgba(26, 1, 247, 0.45)
+        ,
+        rgba(54, 190, 83, 0.45)
+    ), url('../img/avatar-g6ac2d956a_1920.png') ;
+    width: 100%;
+    height: 35rem;
+    background-position: bottom;
+   
+}
+.savingimage{
+    
+        background-image:  linear-gradient(
+            rgba(26, 1, 247, 0.45)
+            ,
+            rgba(54, 190, 83, 0.45)
+        ), url('../img/money-g00bb8d2c9_1920.jpg') ;
+        width: 100%;
+        height: 30rem;
+        background-position: center;
+    
+    
+}
+.formcol{
+    margin: auto;
+    width: 60%;
+}
+.formcoli{
+    display: flex;
+    justify-content: center;
+}
+.formsubmitbtn{
+    border-radius: 2rem;
+    width: 55%;
+    background-color: royalblue;
 }
 .section1{
     display: flex;
@@ -22,10 +163,40 @@ body{
     width: 100px; 
 }
 */
+.colborder{
+    border:2px solid black;
+    border-radius: 3rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 2rem;
+background-color: aliceblue;  
+animation-name: prateek;
+animation-duration: 4s;
+animation-iteration-count: infinite;  
+animation-timing-function: ease-in-out;
+}
+
+@keyframes prateek {
+    from {background-color: aliceblue;}
+    to {background-color: lightblue;}
+  }
+  .colborder:hover {
+    -ms-transform: scale(1.1); /* IE 9 */
+    -webkit-transform: scale(1.1); /* Safari 3-8 */
+    transform: scale(1.1); 
+    opacity: 0.7;
+  }
+  
+  
+
 .card{
     background-color: transparent;
     border-color: transparent;
     align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+    
 }
 
 .card1 img{
@@ -34,4 +205,61 @@ body{
 .btn1{
     width: 100%;
     padding: 1em;
+}
+.cardbtn{
+    border-radius: 1.6rem;
+    cursor: pointer;
+    color: black;
+    background-color: goldenrod;
+    
+}
+.cardbtn:hover{
+    background-color: aquamarine;
+    transform: scale(1.1);
+}
+.bordersection{
+    height: 25rem;
+
+    background-image:    linear-gradient(
+        rgba(26, 1, 247, 0.45)
+        ,
+        rgba(223, 24, 24, 0.45)
+    ), url('../img/euro-g85812dbca_1920.jpg');
+      /*url('../img/money-g00bb8d2c9_1920.jpg')*/
+    background-position: center;
+    z-index: -1;
+    opacity: 0.75;
+}
+
+.box{
+    height: 17rem;
+    width: 90%;
+    border:2px solid white;
+    margin: auto;
+}
+.box:hover{
+    transform: scale(0.9);
+}
+.outercol{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.box1{
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.box2{
+border: 2px solid black;
+background-color: lightcyan;
+border-radius: 4rem;
+margin: auto;
+height: 40rem;
+}
+.box2:hover{
+    transform: scale(1.1);
+}
+.userheading{
+    font-size: 1.7rem;
 }

@@ -17,23 +17,30 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $result = mysqli_query($con, $existSql);
     $numRows = mysqli_num_rows($result);
     if($numRows==1){
-        $sql ="UPDATE `accountdetails` SET `password` = '$password' WHERE `accountdetails`.`accountno` = $accountno ";
+        if($password){
+            $hash = password_hash($password, PASSWORD_DEFAULT);
+        $sql ="UPDATE `accountdetails` SET `password` = '$hash' WHERE `accountdetails`.`accountno` = $accountno ";
         $result = mysqli_query($con, $sql);
         if($result){
                 
-            header("Location: createpassword.php?bankdetails=true");
+            header("Location: createpassword.php?getpassword=true");
             exit();
          }
          else{
             $showError = "Password is not created Due to Technical Issue"; 
   
          }
+        }
+        else{
+            $showError = "Please Enter Your Password"; 
+  
+        }
 
     }
     else{
-        $showError = "Your Bank Account Details is Incorrect";
+        $showError = "Sorry! Password is Created. Please Enter Correct Account Details";
     }
-       header("Location: createpassword.php?bankdetails=false&error=$showError");
+       header("Location: createpassword.php?getpassword=false&error=$showError");
     
         
                

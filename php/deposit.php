@@ -16,7 +16,6 @@ include 'dbconnect.php';
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     <title>Banking System</title>
-<<<<<<< HEAD
   </head>
   <body>
     <?php
@@ -30,7 +29,7 @@ include 'dbconnect.php';
    
 $row=mysqli_fetch_assoc($rresult);
 
-if(isset($_GET['transfersuccess']) && $_GET['transfersuccess']=="true"){
+if(isset($_GET['depositsuccess']) && $_GET['depositsuccess']=="true"){
   echo '<div class="alert alert-success d-flex align-items-center" role="alert">
   <svg xmlns="http://www.w3.org/2000/svg" class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/>
   <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
@@ -45,7 +44,7 @@ if(isset($_GET['transfersuccess']) && $_GET['transfersuccess']=="true"){
 </div>
   ';
 }
-if(isset($_GET['transfersuccess']) && $_GET['transfersuccess']=="false"){
+if(isset($_GET['depositsuccess']) && $_GET['depositsuccess']=="false"){
   echo '<div class="alert alert-danger d-flex align-items-center" role="alert">
   <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/>
   <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
@@ -59,11 +58,43 @@ if(isset($_GET['transfersuccess']) && $_GET['transfersuccess']=="false"){
 
   </div>
 </div>
+
   ';
 }
     
+if(isset($_GET['withdrawsuccess']) && $_GET['withdrawsuccess']=="true"){
+    echo '<div class="alert alert-success d-flex align-items-center" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/>
+    <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+    </symbol>
+    </svg>
+    <div>
+      Transaction is <strong>Successfully</strong> Completed. Your Transaction ID is '.$row['transaction_id'].' 
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  
+    </div>
+  </div>
+    ';
+  }
 
+  if(isset($_GET['withdrawsuccess']) && $_GET['withdrawsuccess']=="false"){
+    echo '<div class="alert alert-success d-flex align-items-center" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/>
+    <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+    </symbol>
+    </svg>
+    <div>
+      Transaction is <strong>Successfully</strong> Completed. Your Transaction ID is '.$row['transaction_id'].' 
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  
+    </div>
+  </div>
+    ';
+  }
 /*
+
     if(isset($_GET['id'])) {
         $id=$_GET['id'];
         $sql="SELECT * FROM `accountdetails` WHERE accountno=$id";
@@ -71,29 +102,11 @@ if(isset($_GET['transfersuccess']) && $_GET['transfersuccess']=="false"){
         $row=mysqli_fetch_assoc($result);
         // <!-- Optional JavaScript; choose one of the two! -->
      echo   '<div class="head my-4">
-=======
-</head>
-<body>
-<?php
-include '_navbar.php';
-
-if(isset($_GET['id'])) {
-    $id=$_GET['id'];
-    $sql="SELECT * FROM `accountdetails` WHERE accountno=$id";
-    $result=mysqli_query($con,$sql);
-    $row=mysqli_fetch_assoc($result);
-    // <!-- Optional JavaScript; choose one of the two! -->
-    echo '<div class="head my-4">
->>>>>>> 0d08983a1edaa1cb0ff31aa6327dbdc340ca59f5
         <h1 class="text-center">Money Transfer</h1>
     </div>
       <div class="container">
         <form action="mthandle.php" method="POST">
-<<<<<<< HEAD
 <div class="">
-=======
-
->>>>>>> 0d08983a1edaa1cb0ff31aa6327dbdc340ca59f5
         <div class="card" style="width: 18rem;">
 
             <div class="card-body">
@@ -118,16 +131,11 @@ if(isset($_GET['id'])) {
                     <input type="text"  class="form-control" id="pname" name="ammount"><br><br>
                 </div>
             </div>
-<<<<<<< HEAD
 </div>
-=======
-
->>>>>>> 0d08983a1edaa1cb0ff31aa6327dbdc340ca59f5
             <button type="submit" class="btn btn-primary">Transfer Money</button>
 
         </form>
     </div>';
-<<<<<<< HEAD
     }
     */
 
@@ -136,77 +144,7 @@ if(isset($_GET['id'])) {
 
 <?php
 
-if(isset($_SESSION['customerloggedin']) && $_SESSION['customerloggedin']==true){
-echo '
-<div class="transferimage w3-hover-opacity">
-    <div class="semibox">
-
-   </div>
-   <div class="semibox">
-    <div style="margin-bottom: 2rem" class="semibox1">
-    <h1 style="color:white; text-align:center ">Welcome '.$_SESSION['name']. ' in PBL Bank</h1>
-
-    </div> 
-    <div class="semibox1">
-    <h2 style="color:gold; text-align:center ">Account Details</h2>
-        <a style="color:black" href="transactionhistory.php" class="btn btn-primary topbutton">Transaction History</a>  
-    </div>
-   
-   </div>
   
- </div>
-
-
- <div class="head my-4">
-        <h1 class="text-center">Money Transfer</h1>
-    </div>
-      <div class="container">
-        <form action="mthandle.php" method="POST">
-<div class="row">
-        <div class="card" style="width: 18rem;">
-
-            <div class="card-body">
-                <h5 class="card-title">Money Transfer From</h5>
-                <label for="acno">Account Number:</label>
-                <input type="text" class="form-control" id="fname" name="sacno" value="' .$_SESSION['accountno']. '"><br><br>
-                <label for="lname">Account Name:</label>
-                <input type="text"  class="form-control" id="lname" name="sname" value="' .$_SESSION['name']. '"><br><br>
-
-
-            </div>
-        </div>
-
-        <div class="card" style="width: 18rem;">
-
-        <div class="card-body">
-            <img style="width:18rem" src="../img/money-transfer (1).png" alt="" srcset="">
-        </div>
-    </div>
-   
-
-            <div class="card" style="width: 18rem;">
-
-                <div class="card-body">
-                    <h5 class="card-title">Money Transfer To</h5>
-                    <label for="acno">Account Number:</label>
-                    <input type="text" class="form-control"  id="rname" name="racno" ><br><br>
-                    <label for="lname">Account Name:</label>
-                    <input type="text"  class="form-control" id="cname" name="rname"><br><br>
-                    <label for="lname">Ammount Transfer:</label>
-                    <input type="text"  class="form-control" id="pname" name="ammount"><br><br>
-                </div>
-            </div>
-</div>
-            <button style="padding:1rem; display:flex; justify-content:center; margin:auto" type="submit" class="formsubmitbtn btn btn-primary">Send Money</button>
-
-        </form>
-    </div>
-    <br>
-    <br>
-
-    ';
-  }
-  else if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true){
     echo '
 <div class="transferimage w3-hover-opacity">
     <div class="semibox">
@@ -218,7 +156,7 @@ echo '
 
     </div> 
     <div class="semibox1">
-    <h2 style="color:gold; text-align:center ">Fund Transfer</h2>
+    <h2 style="color:gold; text-align:center ">Deposit and Withdraw</h2>
         <a style="color:black" href="transactionhistory.php" class="btn btn-primary topbutton">Transaction History</a>  
     </div>
    
@@ -228,24 +166,30 @@ echo '
 
 
  <div class="head my-4">
-        <h1 class="text-center">Money Transfer</h1>
+        <h1 class="text-center">Deposit and Withdraw</h1>
     </div>
       <div class="container">
-        <form action="mthandle.php" method="POST">
 <div class="row">
-        <div class="card" style="width: 18rem;">
 
+
+        <div class="card" style="width: 18rem;">
+        <form action="deposithandle.php" method="POST">
             <div class="card-body">
-                <h5 class="card-title">Money Transfer From</h5>
+                <h5 class="card-title">Deposit Money</h5>
                 <label for="acno">Account Number:</label>
                 <input type="text" class="form-control" id="fname" name="sacno"><br><br>
                 <label for="lname">Account Name:</label>
                 <input type="text"  class="form-control" id="lname" name="sname" ><br><br>
+                <label for="lname">Ammount Deposit:</label>
+                <input type="text"  class="form-control" id="lname" name="deposit" ><br><br>
 
 
             </div>
-        </div>
+            <button type="submit" class=" btn btn-primary">Deposit Money</button>
+        </form>
 
+        </div>
+        
         <div class="card" style="width: 18rem;">
 
         <div class="card-body">
@@ -255,28 +199,31 @@ echo '
    
 
             <div class="card" style="width: 18rem;">
+            <form action="withdrawhandle.php" method="POST">
 
                 <div class="card-body">
-                    <h5 class="card-title">Money Transfer To</h5>
+                    <h5 class="card-title">Withdraw Money</h5>
                     <label for="acno">Account Number:</label>
                     <input type="text" class="form-control"  id="rname" name="racno" ><br><br>
                     <label for="lname">Account Name:</label>
                     <input type="text"  class="form-control" id="cname" name="rname"><br><br>
-                    <label for="lname">Ammount Transfer:</label>
-                    <input type="text"  class="form-control" id="pname" name="ammount"><br><br>
+                    <label for="lname">Ammount Withdraw:</label>
+                    <input type="text"  class="form-control" id="pname" name="withdraw"><br><br>
                 </div>
+                <button type="submit" class=" btn btn-primary">Withdraw Money</button>
+
+                </form>
             </div>
 </div>
-            <button style="padding:1rem; display:flex; justify-content:center; margin:auto" type="submit" class="formsubmitbtn btn btn-primary">Send Money</button>
 
-        </form>
+
     </div>
     <br>
     <br>
 
     ';
 
-  }
+  
 
 ?>
 <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -288,17 +235,4 @@ echo '
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     -->
   </body>
-=======
-}
-?>
-<!-- Option 1: Bootstrap Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-<!-- Option 2: Separate Popper and Bootstrap JS -->
-<!--
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
--->
-</body>
->>>>>>> 0d08983a1edaa1cb0ff31aa6327dbdc340ca59f5
 </html>

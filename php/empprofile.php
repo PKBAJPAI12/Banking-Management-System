@@ -21,9 +21,9 @@ include 'dbconnect.php';
     <?php
     include '_navbar.php';
 
- if(isset($_SESSION['customerloggedin']) && $_SESSION['customerloggedin']==true){ 
+ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true){ 
    $id=$_SESSION['accountno'] ;
-  $sql="SELECT * from `accountdetails` WHERE accountno=$id";
+  $sql="SELECT * from `employeedetails` WHERE employee_id=$id";
   $result=mysqli_query($con,$sql);
 $row=mysqli_fetch_assoc($result);
   
@@ -66,7 +66,7 @@ $row=mysqli_fetch_assoc($result);
 
 
 
-echo '<div class="userimage w3-hover-opacity">
+echo '<div class="employeeimage w3-hover-opacity">
        <div class="semibox">
 
       </div>
@@ -76,8 +76,8 @@ echo '<div class="userimage w3-hover-opacity">
 
        </div> 
        <div class="semibox1">
-       <h2 style="color:gold; text-align:center ">Account Details</h2>
-           <a style="color:black" href="moneytransfer.php" class="btn btn-primary topbutton">Money Transfer</a>  
+       <h2 style="color:gold; text-align:center ">Employee Details</h2>
+           <a style="color:black" href="customers.php" class="btn btn-primary topbutton">View All Customers</a>  
        </div>
       
       </div>
@@ -86,7 +86,7 @@ echo '<div class="userimage w3-hover-opacity">
 
 <div class="container">
   <div class="head my-4">
-    <h1 class="text-center">My Bank Account Details</h1>
+    <h1 class="text-center">Employee Details</h1>
 </div>
 </div>
 
@@ -100,7 +100,7 @@ echo '<div class="userimage w3-hover-opacity">
 <div class="col-8 box2">
 <div class="row mx-3 my-5">
 <div class="col-6">
-<h3 class="userheading">Account Holder Name: </h3>
+<h3 class="userheading">Employee Name: </h3>
 </div>
 <div class="col-6">
 <h3 class="userheading">' .$_SESSION['name']. '</h3>
@@ -117,10 +117,10 @@ echo '<div class="userimage w3-hover-opacity">
 
 
 <div class="col-6">
-<h3 class="userheading">Account Number: </h3>
+<h3 class="userheading">Employee ID: </h3>
 </div>
 <div class="col-6">
-<h3 class="userheading">' .$_SESSION['accountno']. '</h3>
+<h3 class="userheading">' .$row['employee_id']. '</h3>
 
 </div>
 
@@ -134,7 +134,7 @@ echo '<div class="userimage w3-hover-opacity">
 
 
 <div class="col-6">
-<h3 class="userheading">Account Holder Email ID: </h3>
+<h3 class="userheading">Employee Email ID: </h3>
 </div>
 <div class="col-6">
 <h3 class="userheading">' .$row['email'].'</h3>
@@ -142,7 +142,7 @@ echo '<div class="userimage w3-hover-opacity">
 </div>
 
 <div class="col-6">
-<h3 class="userheading">Account Holder Phone Number: </h3>
+<h3 class="userheading">Employee Phone Number: </h3>
 </div>
 <div class="col-6">
 <h3 class="userheading">' .$row['phoneno'].'
@@ -153,23 +153,16 @@ echo '<div class="userimage w3-hover-opacity">
 
 
 <div class="col-6">
-<h3 class="userheading">Account Type: </h3>
+<h3 class="userheading">Designation: </h3>
 </div>
 <div class="col-6">
-<h3 class="userheading">' .$row['account'].'</h3>
+<h3 class="userheading">' .$row['designation'].'</h3>
 
 </div>
 
-<div class="col-6">
-<h3 class="userheading">Current Balance: </h3>
-</div>
-<div class="col-6">
-<h3 class="userheading"></h3>
-' .$row['current_balance'].'
 
-</div>
 <div class="col-12">
-<a style="color:black" href="createpassword.php" class="btn btn-primary topbutton">Change Password</a>
+<a style="color:black" href="createemployeepass.php" class="btn btn-primary topbutton">Change Password</a>
 </div>
 </div>
 
