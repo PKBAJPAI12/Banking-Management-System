@@ -16,7 +16,6 @@ include 'dbconnect.php';
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     <title>Banking System</title>
-<<<<<<< HEAD
   </head>
   <body>
     <?php
@@ -71,29 +70,11 @@ if(isset($_GET['transfersuccess']) && $_GET['transfersuccess']=="false"){
         $row=mysqli_fetch_assoc($result);
         // <!-- Optional JavaScript; choose one of the two! -->
      echo   '<div class="head my-4">
-=======
-</head>
-<body>
-<?php
-include '_navbar.php';
-
-if(isset($_GET['id'])) {
-    $id=$_GET['id'];
-    $sql="SELECT * FROM `accountdetails` WHERE accountno=$id";
-    $result=mysqli_query($con,$sql);
-    $row=mysqli_fetch_assoc($result);
-    // <!-- Optional JavaScript; choose one of the two! -->
-    echo '<div class="head my-4">
->>>>>>> 0d08983a1edaa1cb0ff31aa6327dbdc340ca59f5
         <h1 class="text-center">Money Transfer</h1>
     </div>
       <div class="container">
         <form action="mthandle.php" method="POST">
-<<<<<<< HEAD
 <div class="">
-=======
-
->>>>>>> 0d08983a1edaa1cb0ff31aa6327dbdc340ca59f5
         <div class="card" style="width: 18rem;">
 
             <div class="card-body">
@@ -118,16 +99,11 @@ if(isset($_GET['id'])) {
                     <input type="text"  class="form-control" id="pname" name="ammount"><br><br>
                 </div>
             </div>
-<<<<<<< HEAD
 </div>
-=======
-
->>>>>>> 0d08983a1edaa1cb0ff31aa6327dbdc340ca59f5
             <button type="submit" class="btn btn-primary">Transfer Money</button>
 
         </form>
     </div>';
-<<<<<<< HEAD
     }
     */
 
@@ -288,17 +264,4 @@ echo '
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     -->
   </body>
-=======
-}
-?>
-<!-- Option 1: Bootstrap Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-<!-- Option 2: Separate Popper and Bootstrap JS -->
-<!--
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
--->
-</body>
->>>>>>> 0d08983a1edaa1cb0ff31aa6327dbdc340ca59f5
 </html>

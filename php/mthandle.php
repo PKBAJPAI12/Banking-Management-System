@@ -11,13 +11,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $rname = $_POST['rname'];
     $ammount=$_POST['ammount'];
 
-<<<<<<< HEAD
     
      
-=======
-
-
->>>>>>> 0d08983a1edaa1cb0ff31aa6327dbdc340ca59f5
     // Check whether this account exists
     $sSql = "SELECT * FROM `accountdetails` WHERE accountno = $sacno AND name='$sname'";
     $sResult = mysqli_query($con, $sSql);
@@ -30,7 +25,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $scResult=mysqli_query($con,$scSql);
         $scRow=mysqli_fetch_assoc($scResult);
         $sCurrent=$scRow['current_balance'];
-<<<<<<< HEAD
         if($sCurrent>=$ammount){
             $sAbal=$sCurrent-$ammount;
             $rcSql="SELECT * FROM `accountdetails` WHERE accountno = $racno";
@@ -66,27 +60,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     else if($sNumRows==1 && $rNumRows!=1) {
         $showError = "Receiver Account Detail is Incorrect. Please! Enter Valid Account Details";
-=======
-        $sCbal=$sCurrent-$ammount;
-        $rcSql="SELECT * FROM `accountdetails` WHERE accountno = $racno";
-        $rcResult=mysqli_query($con,$rcSql);
-        $rcRow=mysqli_fetch_assoc($rcResult);
-        $rCurrent=$rcRow['current_balance'];
-        $rCbal=$rCurrent+$ammount;
-      $senderSql="UPDATE `accountdetails` SET `current_balance` = '$sCbal' WHERE `accountdetails`.`accountno` = $sacno  ";
-        $receiverSql="UPDATE `accountdetails` SET `current_balance` = '$rCbal' WHERE `accountdetails`.`accountno` = $racno  ";
-       $senderResult=mysqli_query($con,$senderSql);
-        $receiverResult=mysqli_query($con,$senderSql);
-    }
-    else if($sNumRows==1 && $rNumRows!=1) {
-        $showError = "Account not Created";
->>>>>>> 0d08983a1edaa1cb0ff31aa6327dbdc340ca59f5
 
     }
 
         else if ($sNumRows!=1 && $rNumRows==1){
 
-<<<<<<< HEAD
             $showError = "Sender Account Detail is Incorrect. Please! Enter Valid Account Details";
 
         }
@@ -99,17 +77,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
      $insertResult = mysqli_query($con, $insertSql);
 
     header("Location: moneytransfer.php?transfersuccess=false&error=$showError");
-=======
-            $showError = "Account not Created";
-
-        }
-        else{
-            $showError = "Account not Created";
-
-        }
-
-    header("Location: signup.php?accountopening=false&error=$showError");
->>>>>>> 0d08983a1edaa1cb0ff31aa6327dbdc340ca59f5
 
 
 
